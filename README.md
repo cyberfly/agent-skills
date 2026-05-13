@@ -15,4 +15,10 @@ Each skill is defined in a `SKILL.md` file containing the name, description, and
 
 ## Usage
 
-Skills are loaded by Claude Code from `~/.claude/skills/`. This repository is symlinked there so skills are available across projects.
+After cloning, run the sync script to symlink all skills into every agent tool directory found on your machine:
+
+```bash
+node sync-skills.js
+```
+
+This links each skill into `~/.claude/skills`, `~/.codex/skills`, and `~/.agents/skills` — whichever exist. Re-run it whenever you add a new skill.
