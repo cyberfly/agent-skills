@@ -6,7 +6,7 @@ Reusable skills and tools for AI agents across different platforms.
 
 | Skill | Description |
 |-------|-------------|
-| [git-staged](./SKILL.md) | Manage complex git staging scenarios — commit specific files without disturbing already-staged files |
+| [git-staged](./git-staged/SKILL.md) | Manage complex git staging scenarios — commit specific files without disturbing already-staged files |
 
 ## Structure
 
