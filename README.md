@@ -9,6 +9,7 @@ Reusable skills and tools for AI agents across different platforms.
 | [git-staged](./git-staged/SKILL.md) | Manage complex git staging scenarios — commit specific files without disturbing already-staged files |
 | [staged](./staged/SKILL.md) | Stage only files the agent modified this session, leaving manual user edits untouched |
 | [list-staged](./list-staged/SKILL.md) | Print a list of currently staged files with relative paths |
+| [commit-message](./commit-message/SKILL.md) | Generate a conventional commit message from staged changes using prefixes like feat, fix, chore, docs, refactor |
 
 ## Structure
 
