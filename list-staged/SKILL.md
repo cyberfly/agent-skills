@@ -1,9 +1,9 @@
 ---
-name: ls-staged
-description: Print the list of currently staged files with their relative paths. Use when the user invokes /ls-staged or asks to see, list, or show staged files before a commit.
+name: list-staged
+description: Print the list of currently staged files with their relative paths. Use when the user invokes /list-staged or asks to see, list, or show staged files before a commit.
 ---
 
-# ls-staged
+# list-staged
 
 Print all files currently in the git index (staged for the next commit).
 
