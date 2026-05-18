@@ -10,6 +10,7 @@ Reusable skills and tools for AI agents across different platforms.
 | [staged](./staged/SKILL.md) | Stage only files the agent modified this session, leaving manual user edits untouched |
 | [list-staged](./list-staged/SKILL.md) | Print a list of currently staged files with relative paths |
 | [commit-message](./commit-message/SKILL.md) | Generate a conventional commit message from staged changes using prefixes like feat, fix, chore, docs, refactor |
+| [stash-staged](./stash-staged/SKILL.md) | Stash only staged changes (leaving unstaged work untouched) and recover them later |
 
 ## Structure
 
