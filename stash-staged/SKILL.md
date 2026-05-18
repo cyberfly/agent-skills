@@ -13,8 +13,8 @@ Stash only staged changes and recover them — unstaged work stays in the workin
 # Stash only staged changes
 git stash push --staged -m "my staged work"
 
-# Recover (restore as staged changes)
-git stash pop
+# Recover and re-stage
+git stash pop && git add -u
 ```
 
 > Requires Git 2.35+. Check with `git --version`.
@@ -33,15 +33,17 @@ git stash push --staged -m "feature: auth changes"
 
 ## Recover the stash
 
-```bash
-# Pop (apply and remove from stash list)
-git stash pop
+`git stash pop` restores changes as **unstaged** — always re-stage afterward:
 
-# Apply without removing (keeps it in the list)
-git stash apply stash@{0}
+```bash
+# Pop and re-stage all restored files
+git stash pop && git add -u
+
+# Apply without removing (keeps it in the list), then re-stage
+git stash apply stash@{0} && git add -u
 ```
 
-> `pop` restores as unstaged changes. Re-stage with `git add` if needed.
+If you used `git add -p` (partial hunks) when originally staging, re-stage manually with `git add -p` instead of `git add -u` to avoid staging more than intended.
 
 ## List and inspect stashes
 
@@ -61,6 +63,6 @@ git stash drop stash@{0}
 | Situation | Command |
 |-----------|---------|
 | Stash staged, keep unstaged | `git stash push --staged` |
-| Recover and keep in list | `git stash apply` |
-| Recover and remove from list | `git stash pop` |
+| Recover and keep in list | `git stash apply stash@{0} && git add -u` |
+| Recover and remove from list | `git stash pop && git add -u` |
 | Stash everything (staged + unstaged) | `git stash push` |
