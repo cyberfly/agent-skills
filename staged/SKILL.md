@@ -1,6 +1,6 @@
 ---
 name: staged
-description: Stage only the files the agent modified in this session, without committing. Use when the user invokes /staged or wants to git add only the agent's recent changes while leaving any manual edits unstaged.
+description: Stage only the files the agent modified in this session, then suggest a commit message (without committing). Use when the user invokes /staged or wants to git add only the agent's recent changes while leaving any manual edits unstaged.
 ---
 
 # staged
@@ -28,7 +28,10 @@ Stage only the files you (the agent) modified this session — not everything in
    git diff --cached --stat
    ```
 
-Report the list of staged files and remind the user they can run `git commit` when ready.
+5. **Generate a commit message**
+   Invoke the `commit-message` skill to produce a Conventional Commits message from the staged changes. Present it to the user — do not commit automatically unless they ask.
+
+Report the list of staged files alongside the suggested commit message.
 
 ## Edge cases
 
