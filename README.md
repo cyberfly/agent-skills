@@ -11,6 +11,8 @@ Reusable skills and tools for AI agents across different platforms.
 | [list-staged](./list-staged/SKILL.md) | Print a list of currently staged files with relative paths |
 | [commit-message](./commit-message/SKILL.md) | Generate a conventional commit message from staged changes using prefixes like feat, fix, chore, docs, refactor |
 | [stash-staged](./stash-staged/SKILL.md) | Stash only staged changes (leaving unstaged work untouched) and recover them later |
+| [checkpoint](./checkpoint/SKILL.md) | Save important conversation context to a timestamped handoff file so it can be loaded into a new session |
+| [load-checkpoint](./load-checkpoint/SKILL.md) | Load a saved checkpoint to restore context from a previous session |
 
 ## Structure
 
