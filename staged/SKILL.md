@@ -29,7 +29,17 @@ Stage only the files you (the agent) modified this session — not everything in
    ```
 
 5. **Generate a commit message**
-   Invoke the `commit-message` skill to produce a Conventional Commits message from the staged changes. Present it to the user — do not commit automatically unless they ask.
+   Inspect the staged diff and write a Conventional Commits message directly — do **not** invoke the `commit-message` skill (saves tokens).
+   ```bash
+   git diff --cached          # full diff for context
+   ```
+   Format: `<type>(<scope>): <subject>` with an optional body after a blank line.
+   - **type**: `feat` (new capability), `fix` (bug), `chore` (deps/config/tooling), `docs`, `refactor` (no behavior change), `test`, `style` (formatting), `perf`, `build`, `ci`, `revert`.
+   - **scope** (optional): short noun for the area changed (`auth`, `api`, `ui`, `db`). Omit when changes span many areas.
+   - **subject**: imperative mood ("add" not "added"), lowercase first letter, no trailing period, first line ≤ 72 chars.
+   - **body** (optional): add only when the *why* isn't obvious from the subject.
+
+   Present the message to the user — do not commit automatically unless they ask.
 
 Report the list of staged files alongside the suggested commit message.
 
