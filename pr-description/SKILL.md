@@ -20,16 +20,30 @@ Generate a ready-to-paste GitHub PR description from the commits and diff on the
    git log --oneline main..HEAD          # commits on this branch
    git diff --stat main...HEAD           # files changed (note the three dots)
    git diff main...HEAD                  # full diff for context
+   git branch --show-current             # branch name (may encode an issue ref)
    ```
    Read the diff to understand *what* changed and *why* — don't just restate commit subjects.
 
-3. **Draft the description** using the template below. Pull every section from the commits, diff, and the conversation. Do not invent decisions or tests that aren't supported by the changes.
+3. **Check for a repo PR template**
+   ```bash
+   ls .github/PULL_REQUEST_TEMPLATE.md .github/pull_request_template.md docs/PULL_REQUEST_TEMPLATE.md 2>/dev/null
+   ```
+   If one exists, **honor its structure** — fill the repo's sections with content mapped from the template below, rather than imposing this skill's headings. If none exists, use the template below as-is.
 
-4. **Output the markdown** in a fenced code block so the user can copy it verbatim into the GitHub PR body. Offer to open the PR with `gh pr create --body` only if the user asks.
+4. **Detect linked issues** — scan commit messages and the branch name for issue refs (`#123`, `PROJ-45`, `fix/issue-123`). If found, add a `Closes #123` line so the PR auto-closes the issue on merge. Never invent an issue number.
+
+5. **Draft the description** using the template below. Pull every section from the commits, diff, and the conversation. Do not invent decisions or tests that aren't supported by the changes.
+
+6. **Output** a suggested **PR title** (one line, Conventional Commits style — `type(scope): subject`, ≤ 72 chars) followed by the **PR body**, each in its own fenced code block so the user can copy them into GitHub's separate title and body fields. Offer to open the PR with `gh pr create --title ... --body ...` only if the user asks.
 
 ## Template
 
 ```md
+## Summary
+<One-line TL;DR of what this PR does — the elevator pitch for a busy reviewer.>
+
+Closes #<issue>   <!-- omit this line if there is no linked issue -->
+
 ## Current task / goal
 <What this PR sets out to accomplish, in one or two sentences.>
 
@@ -48,6 +62,7 @@ Generate a ready-to-paste GitHub PR description from the commits and diff on the
 
 ## Section guidance
 
+- **Summary** — one line a reviewer can read in the PR list. Lead with the outcome, not the mechanics.
 - **Current task / goal** — the *why* of the PR, in the user's framing where possible. Keep it short.
 - **Decisions made & rationale** — only non-obvious choices and trade-offs. Skip trivial defaults.
 - **Open questions / next steps** — blockers, deferred work, or explicit asks for the reviewer. Omit the section's bullets (write "None") rather than padding.
@@ -62,6 +77,7 @@ Generate a ready-to-paste GitHub PR description from the commits and diff on the
 
 ## Notes
 
-- Output is the PR *body* only — do not include a title line unless the user asks; GitHub takes the title separately.
+- A repo's own `PULL_REQUEST_TEMPLATE.md` always wins over this skill's headings — map content into it.
+- Output the title and body in **separate** code blocks; GitHub takes the title and body as separate fields.
 - Never commit, push, or open the PR automatically. Stop at presenting the markdown unless the user explicitly asks to create the PR.
 - Keep it skimmable — a reviewer should grasp the PR in under a minute.
