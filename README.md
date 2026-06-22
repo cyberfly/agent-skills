@@ -14,6 +14,7 @@ Reusable skills and tools for AI agents across different platforms.
 | [checkpoint](./checkpoint/SKILL.md) | Save important conversation context to a timestamped handoff file so it can be loaded into a new session |
 | [load-checkpoint](./load-checkpoint/SKILL.md) | Load a saved checkpoint to restore context from a previous session |
 | [pr-description](./pr-description/SKILL.md) | Craft a GitHub PR description (markdown) from the current branch's changes |
+| [staticbase](./staticbase/SKILL.md) | Scaffold a new static website project using the staticbase stack (Vite 7, Tailwind CSS 4, Alpine.js 3, markdown blog) |
 
 ## Structure
 
