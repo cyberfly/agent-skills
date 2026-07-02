@@ -10,16 +10,17 @@ Scaffold a production-ready static website with multi-page support, responsive n
 ## Quick start
 
 ```
-/staticbase my-project-name
+/staticbase [project-name]
 ```
 
-1. Run the scaffold script:
+1. Run the scaffold script from the folder you want the site in (create and `cd` into an empty folder first if starting fresh):
    ```bash
-   bash /Users/integrasolid/.claude/skills/staticbase/scripts/scaffold.sh <project-name>
+   bash /Users/integrasolid/.claude/skills/staticbase/scripts/scaffold.sh [project-name]
    ```
+   Scaffolds directly into the **current directory** — it does not create a subfolder. `project-name` is optional (used only for the site title / `package.json` name) and defaults to the current folder's name. The script refuses to run if `package.json`, `vite.config.js`, or `index.html` already exist in the current directory, to avoid clobbering an existing project.
 2. Install dependencies:
    ```bash
-   cd <project-name> && npm install
+   npm install
    ```
 3. Start dev server:
    ```bash

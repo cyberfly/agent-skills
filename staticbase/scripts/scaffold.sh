@@ -8,15 +8,17 @@ BLUE='\033[0;34m'
 RED='\033[0;31m'
 NC='\033[0m'
 
-PROJECT_NAME="${1:-mystaticbase}"
-PROJECT_PATH="./$PROJECT_NAME"
+PROJECT_NAME="${1:-$(basename "$PWD")}"
+PROJECT_PATH="."
 
 echo -e "${BLUE}Creating staticbase project: ${PROJECT_NAME}${NC}"
 
-if [ -d "$PROJECT_PATH" ]; then
-  echo -e "${RED}Error: Directory already exists: ${PROJECT_NAME}${NC}"
-  exit 1
-fi
+for f in package.json vite.config.js index.html; do
+  if [ -e "$f" ]; then
+    echo -e "${RED}Error: ${f} already exists in $(pwd) — refusing to overwrite an existing project${NC}"
+    exit 1
+  fi
+done
 
 mkdir -p "$PROJECT_PATH"/{src,public/images,content/blog,templates,lib}
 
@@ -656,7 +658,6 @@ EOF
 echo -e "${GREEN}Project created: ${PROJECT_NAME}${NC}"
 echo ""
 echo "Next steps:"
-echo "  cd ${PROJECT_NAME}"
 echo "  npm install"
 echo "  npm run dev"
 echo ""
