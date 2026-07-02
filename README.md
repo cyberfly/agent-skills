@@ -16,6 +16,7 @@ Reusable skills and tools for AI agents across different platforms.
 | [pr-description](./pr-description/SKILL.md) | Craft a GitHub PR description (markdown) from the current branch's changes |
 | [staticbase](./staticbase/SKILL.md) | Scaffold a new static website project using the staticbase stack (Vite 7, Tailwind CSS 4, Alpine.js 3, markdown blog) |
 | [session-log](./session-log/SKILL.md) | Record a session's decisions, tradeoffs, and rationale into a per-branch markdown log under `docs/`, appending a timestamped section each run |
+| [playwright-save-test](./playwright-save-test/SKILL.md) | Convert a successful Playwright MCP browser session into a standalone `@playwright/test` spec that replays the flow without AI |
 
 ## Structure
 
