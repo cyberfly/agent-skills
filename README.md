@@ -8,6 +8,7 @@ Reusable skills and tools for AI agents across different platforms.
 |-------|-------------|
 | [git-staged](./git-staged/SKILL.md) | Manage complex git staging scenarios — commit specific files without disturbing already-staged files |
 | [staged](./staged/SKILL.md) | Stage only files the agent modified this session, leaving manual user edits untouched |
+| [commit](./commit/SKILL.md) | Stage only files the agent modified this session and commit them immediately with a generated Conventional Commits message — the commit-and-be-done counterpart to `/staged` |
 | [list-staged](./list-staged/SKILL.md) | Print a list of currently staged files with relative paths |
 | [commit-message](./commit-message/SKILL.md) | Generate a conventional commit message from staged changes using prefixes like feat, fix, chore, docs, refactor |
 | [stash-staged](./stash-staged/SKILL.md) | Stash only staged changes (leaving unstaged work untouched) and recover them later |
@@ -17,6 +18,7 @@ Reusable skills and tools for AI agents across different platforms.
 | [staticbase](./staticbase/SKILL.md) | Scaffold a new static website project using the staticbase stack (Vite 7, Tailwind CSS 4, Alpine.js 3, markdown blog) |
 | [session-log](./session-log/SKILL.md) | Record a session's decisions, tradeoffs, and rationale into a per-branch markdown log under `docs/`, appending a timestamped section each run |
 | [playwright-save-test](./playwright-save-test/SKILL.md) | Convert a successful Playwright MCP browser session into a standalone `@playwright/test` spec that replays the flow without AI |
+| [branch-bug-check](./branch-bug-check/SKILL.md) | Review the current branch against its base for bugs and regressions — reads changed code in context, runs the tests/build, and reports ranked findings with file:line and fixes (no code edits) |
 
 ## Structure
 
