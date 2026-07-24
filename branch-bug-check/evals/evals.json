@@ -1,0 +1,44 @@
+{
+  "skill_name": "branch-bug-check",
+  "evals": [
+    {
+      "id": 0,
+      "name": "missed-caller",
+      "prompt": "I just finished the work on this branch and I want to merge it into main. Can you check it for any bugs or regressions before I open the PR?",
+      "expected_output": "Identifies that src/receipt.js still reads p.total after pricing() renamed the field to grandTotal, causing a crash/undefined at runtime; notes the test suite passes and therefore does not catch it. Reports as a high-severity regression with receipt.js and a fix (read p.grandTotal).",
+      "files": ["fixture: js-missed-caller @ feat/rename-total"],
+      "assertions": [
+        "Identifies src/receipt.js as still reading the removed .total field (the missed caller)",
+        "Flags the receipt.js issue as high severity / blocking (not a minor nit)",
+        "Notes the test suite passes yet does not cover receipt.js, so tests miss the bug",
+        "Suggests fixing receipt.js to read p.grandTotal",
+        "Does not raise high-severity findings on the correct checkout.js or pricing.js"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "removed-guard",
+      "prompt": "Review my current branch for bugs before I merge. Did I break anything?",
+      "expected_output": "Runs the test suite, sees ZeroDivisionError from average([]) after the empty-input guard was removed, and reports it as a high-severity regression tied to the removed guard in stats.py with a fix (restore the guard).",
+      "files": ["fixture: py-removed-guard @ refactor/simplify-average"],
+      "assertions": [
+        "Actually runs the test suite (unittest/pytest/make test) and references its output",
+        "Identifies the ZeroDivisionError / crash on empty input to average()",
+        "Attributes the failure to the removed empty-input guard in stats.py",
+        "Suggests restoring the guard / handling the empty-list case"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "clean-refactor",
+      "prompt": "Is this branch safe to merge? Check it for regressions.",
+      "expected_output": "Recognizes the formatName refactor preserves behavior, confirms tests pass, and reports the branch as safe to merge with no manufactured findings.",
+      "files": ["fixture: clean-refactor @ refactor/format-template"],
+      "assertions": [
+        "Concludes the branch is safe to merge / reports no regressions",
+        "Confirms the tests were run and pass",
+        "Does not manufacture high-severity findings on the behavior-preserving refactor"
+      ]
+    }
+  ]
+}
