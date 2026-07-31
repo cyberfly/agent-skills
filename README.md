@@ -33,3 +33,19 @@ node sync-skills.js
 ```
 
 This links each skill into `~/.claude/skills`, `~/.codex/skills`, and `~/.agents/skills` — whichever exist. Re-run it whenever you add a new skill.
+
+### Temporarily disabling skills
+
+To hide the synced skills (e.g. for a clean demo) without deleting anything:
+
+```bash
+node toggle-skills.js off      # stash this repo's skill symlinks aside
+node toggle-skills.js on       # restore them
+node toggle-skills.js status   # show what's currently on/off
+```
+
+`off` moves only the symlinks pointing back into this repo into a sibling
+`<skills>-off` folder (outside the scanned dir, so discovery stops finding
+them); unrelated skills in the target folders are left untouched. Skills load
+at session start, so run `off` **before** launching the session you want them
+hidden in, and restart to pick up any change.
