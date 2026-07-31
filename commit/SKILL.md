@@ -1,6 +1,7 @@
 ---
 name: commit
 description: Stage only the files the agent modified in this session and commit them immediately with a generated Conventional Commits message. Use when the user invokes /commit or wants the agent's recent changes committed in one shot, without sweeping in manual or unrelated edits. This is the commit-and-be-done counterpart to /staged (which stops at staging).
+model: haiku
 ---
 
 # commit

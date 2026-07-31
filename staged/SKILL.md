@@ -1,6 +1,7 @@
 ---
 name: staged
 description: Stage only the files the agent modified in this session, then suggest a commit message (without committing). Use when the user invokes /staged or wants to git add only the agent's recent changes while leaving any manual edits unstaged.
+model: haiku
 ---
 
 # staged
